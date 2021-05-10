@@ -1,0 +1,12 @@
+﻿namespace MovieDiary.Library
+{
+    public class User
+    {
+        public int Id { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string GoogleId { get; set; }
+        public string Settings { get; set; }
+        public bool Admin { get; set; }
+    }
+}

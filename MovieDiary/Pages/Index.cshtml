@@ -1,10 +1,18 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Login page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Login Form -->
+        <form method="post">
+            <input type="text" id="login" class="fadeIn" name="login" placeholder="Login">
+            <input type="text" id="password" class="fadeIn" name="login" placeholder="Password">
+            <input type="submit" class="fadeIn" value="Log In">
+            <input type="submit" class="fadeIn" value="Sign Up With Google">
+        </form>
+
+    </div>
 </div>
