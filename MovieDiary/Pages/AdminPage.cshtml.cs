@@ -1,20 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using MovieDiary.Services;
-using System.Collections.Generic;
 
 namespace MovieDiary.Pages
 {
-    public class IndexModel : PageModel
+    public class AdminPageModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly UserService _userService;
 
-        [BindProperty] 
+        [BindProperty]
         public IEnumerable<string> UserNames { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, DataContext dc)
+        public AdminPageModel(ILogger<IndexModel> logger, DataContext dc)
         {
             _logger = logger;
             _userService = new UserService(dc);
@@ -23,6 +23,11 @@ namespace MovieDiary.Pages
 
         public void OnGet()
         {
+        }
+
+        public void OnPost(string id) 
+        {
+            var a = 1;
         }
     }
 }
