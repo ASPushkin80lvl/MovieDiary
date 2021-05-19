@@ -84,9 +84,6 @@ namespace MovieDiary.Migrations
                     b.Property<bool>("Admin")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("GoogleId")
-                        .HasColumnType("text");
-
                     b.Property<string>("Login")
                         .HasColumnType("text");
 

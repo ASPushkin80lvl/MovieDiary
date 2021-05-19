@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MovieDiary.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class MovieDiaryMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,7 +32,6 @@ namespace MovieDiary.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Login = table.Column<string>(type: "text", nullable: true),
                     Password = table.Column<string>(type: "text", nullable: true),
-                    GoogleId = table.Column<string>(type: "text", nullable: true),
                     Settings = table.Column<string>(type: "text", nullable: true),
                     Admin = table.Column<bool>(type: "boolean", nullable: false)
                 },
