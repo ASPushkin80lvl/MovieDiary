@@ -7,5 +7,6 @@
         public string Password { get; set; }
         public string Settings { get; set; }
         public bool Admin { get; set; }
+        public bool LoggedIn { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MovieDiary.Migrations
 {
-    public partial class MovieDiaryMigration : Migration
+    public partial class MovieDiary : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,7 +33,8 @@ namespace MovieDiary.Migrations
                     Login = table.Column<string>(type: "text", nullable: true),
                     Password = table.Column<string>(type: "text", nullable: true),
                     Settings = table.Column<string>(type: "text", nullable: true),
-                    Admin = table.Column<bool>(type: "boolean", nullable: false)
+                    Admin = table.Column<bool>(type: "boolean", nullable: false),
+                    LoggedIn = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {

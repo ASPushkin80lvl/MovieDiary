@@ -1,28 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using MovieDiary.Services;
-using System.Collections.Generic;
 
 namespace MovieDiary.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
         private readonly UserService _userService;
 
-        [BindProperty] 
-        public IEnumerable<string> UserNames { get; set; }
+        public IndexModel(DataContext dc) => _userService = new UserService(dc);
 
-        public IndexModel(ILogger<IndexModel> logger, DataContext dc)
+        public IActionResult OnGet()
         {
-            _logger = logger;
-            _userService = new UserService(dc);
-            UserNames = _userService.GetUserNames();
-        }
+            var user = _userService.LoggedIn();
+            if (user != null)
+            {
+                if (user.Admin) return RedirectToPage("AdminPage", "Logged");
+                return RedirectToPage("DiaryTable", "Logged");
+            }
 
-        public void OnGet()
-        {
+            return RedirectToPage("Login");
         }
     }
 }

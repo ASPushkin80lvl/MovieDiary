@@ -1,33 +1,40 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 using MovieDiary.Services;
 
 namespace MovieDiary.Pages
 {
     public class AdminPageModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
         private readonly UserService _userService;
 
         [BindProperty]
-        public IEnumerable<string> UserNames { get; set; }
+        public List<string> UserNames { get; set; }
 
-        public AdminPageModel(ILogger<IndexModel> logger, DataContext dc)
+        public AdminPageModel(DataContext dc)
         {
-            _logger = logger;
             _userService = new UserService(dc);
             UserNames = _userService.GetUserNames();
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            var user = _userService.LoggedIn();
+            if (user == null) return RedirectToPage("Login");
+            if (!user.Admin) return RedirectToPage("DiaryTable", "Logged");
+
+            return RedirectToPage("AdminPage", "Logged");
         }
 
-        public void OnPost(string id) 
+        public void OnGetLogged() { }
+
+        public void OnPostDelete(string id)
         {
-            var a = 1;
+            var actualId = id.Split('-')[0];
+            _userService.DeleteUser(actualId);
+            UserNames = _userService.GetUserNames();
         }
     }
 }

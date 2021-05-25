@@ -84,6 +84,9 @@ namespace MovieDiary.Migrations
                     b.Property<bool>("Admin")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("LoggedIn")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Login")
                         .HasColumnType("text");
 

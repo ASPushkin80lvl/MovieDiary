@@ -1,13 +1,13 @@
 ﻿@page
-@model MovieDiary.Pages.LoginModel
+@model MovieDiary.Pages.RegisterModel
 @{
-    ViewData["Title"] = "Login page";
+    ViewData["Title"] = "Register page";
 }
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
         <div class="col-10 col-md-8 col-lg-6">
-            <h1>Login</h1>
-            <form asp-page-handler="login" method="post">
+            <h1>Sign up</h1>
+            <form asp-page-handler="Register" method="post">
                 <div class="form-group">
                     <label>Login:</label>
                     <input type="text" class="form-control" placeholder="Login..." name="username">
@@ -17,8 +17,8 @@
                     <input type="password" class="form-control" placeholder="Password..." name="password">
                 </div>
                 <div class="col-md-12 text-center">
-                    <button type="submit" value="Login" class="btn btn-primary">Login</button>
-                    <p>Does not have an account? <a href="/Register">Register here!</a></p>
+                    <button type="submit" value="Register" class="btn btn-primary">Register</button>
+                    <p>Already have an account? <a href="/Login">Login here!</a></p>
                 </div>
             </form>
         </div>

@@ -1,0 +1,90 @@
+﻿@page
+@model MovieDiary.Pages.DiaryEditModel
+@{
+    ViewData["Title"] = "Edit Movies";
+}
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <form method="post">
+                <div class="form-group">
+                    <label for="Title">Title</label>
+                    <input type="text" class="form-control" id="Title" asp-for="Row.MovieName" value=@(Model.Row.MovieName)>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Perhaps you were looking for?</label>
+                </div>
+                <div class="form-group">
+                    @if (Model.MarkId != 0)
+                    {
+                        <button asp-page-handler="Find" class="btn btn-primary" disabled>Find</button>
+                    }
+                    else
+                    {
+                        <button asp-page-handler="Find" class="btn btn-primary">Find</button>
+                    }
+                </div>
+                <div class="form-group">
+                    @if (Model.Found)
+                    {
+                        <input readonly asp-page-handler="Fill" type="submit" class="form-control" name="movieStr" value="@(Model.Suggestion[0])" placeholder="">
+                        <input readonly asp-page-handler="Fill" type="submit" class="form-control" name="movieStr" value="@(Model.Suggestion[1])" placeholder="">
+                        <input readonly asp-page-handler="Fill" type="submit" class="form-control" name="movieStr" value="@(Model.Suggestion[2])" placeholder="">
+                    }
+                    else
+                    {
+                        <input disabled type="email" class="form-control" id="havedisabled1" placeholder="">
+                        <input disabled type="email" class="form-control" id="havedisabled2" placeholder="">
+                        <input disabled type="email" class="form-control" id="havedisabled3" placeholder="">
+                    }
+
+                </div>
+                <div class="form-group">
+                    <label for="Mark">Mark</label>
+                    <input type="text" class="form-control" id="Mark" asp-for="Row.Mark" value=@(Model.Row.Mark)>
+                </div>
+                @if (Model.Settings.ShowYear)
+                {
+                    <div class="form-group">
+                        <label for="Year">Year</label>
+                        <input type="number" class="form-control" id="Year" asp-for="Row.Year" value=@(Model.Row.Year)>
+                    </div>
+                }
+                @if (Model.Settings.ShowDirector)
+                {
+                    <div class="form-group">
+                        <label for="director">Director</label>
+                        <input type="text" class="form-control" id="director" asp-for="Row.Director" value=@(Model.Row.Director)>
+                    </div>
+                }
+                @if (Model.Settings.ShowCountry)
+                {
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" id="country" asp-for="Row.Country" value=@(Model.Row.Country)>
+                    </div>
+                }
+                <input type="text" hidden class="form-control" asp-for="Row.ImdbId" value=@(Model.Row.ImdbId)>
+                <input type="number" hidden class="form-control" asp-for="MarkId" value=@(Model.MarkId)>
+                <hr />
+                @foreach (var field in Model.Settings.AdditionalFieldNames)
+                {
+                    <div class="form-group">
+                        <label for=@(field)>@(field)</label>
+                        @if (Model.Row.AdditionalFields.ContainsKey(field))
+                        {
+                            <input type="text" class="form-control" id=@(field) asp-for="Row.AdditionalFields[field]" value=@(Model.Row.AdditionalFields[field])>
+                        }
+                        else
+                        {
+                            <input type="text" class="form-control" id=@(field) asp-for="Row.AdditionalFields[field]" value="">
+                        }
+                    </div>
+                }
+                <button type="submit" class="btn btn-primary" asp-page-handler="Save">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

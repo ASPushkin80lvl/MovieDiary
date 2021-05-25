@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace MovieDiary.Services
 {
@@ -27,7 +28,7 @@ namespace MovieDiary.Services
                     Id = lastMovieId,
                     ImdbId = row.ImdbId,
                     Title = row.MovieName,
-                    Year = (int)row.Year
+                    Year = row.Year ?? 0
                 };
                 _dc.Movies.Add(movie);
             }
@@ -57,10 +58,11 @@ namespace MovieDiary.Services
 
         public List<FilmRow> GetUserMarks(int userId)
         {
-            return _dc.Marks
+            var marks = _dc.Marks
                 .Where(m => m.User.Id == userId)
-                .Select(m => new FilmRow(m))
+                .Include(p => p.User).Include(p => p.Movie)
                 .ToList();
+            return marks.Select(m => new FilmRow(m)).ToList();
         }
 
         public void DeleteUserMark(int id)

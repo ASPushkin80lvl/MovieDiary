@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MovieDiary.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210519190902_MovieDiaryMigration")]
-    partial class MovieDiaryMigration
+    [Migration("20210525173049_MovieDiary")]
+    partial class MovieDiary
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,6 +84,9 @@ namespace MovieDiary.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<bool>("Admin")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("LoggedIn")
                         .HasColumnType("boolean");
 
                     b.Property<string>("Login")

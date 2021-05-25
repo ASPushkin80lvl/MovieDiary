@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieDiary", "MovieDiary.csproj", "{8F88F0CC-600B-46EE-A69F-056B4D40D3E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingApp", "..\TestingApp\TestingApp.csproj", "{3FDE2E82-FC55-4C5D-91FE-8252E60640B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingApp", "..\TestingApp\TestingApp.csproj", "{3FDE2E82-FC55-4C5D-91FE-8252E60640B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

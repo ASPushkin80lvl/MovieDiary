@@ -17,5 +17,7 @@ namespace MovieDiary.Library
         public string Title { get; set; }
         [JsonProperty("release_date")]
         public string Year { get; set; }
+
+        public override string ToString() => $"{Id} {Title} ({Year})";
     }
 }
