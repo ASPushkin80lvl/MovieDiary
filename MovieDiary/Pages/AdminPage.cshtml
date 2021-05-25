@@ -1,0 +1,27 @@
+﻿@page
+@model AdminPageModel
+@{
+    ViewData["Title"] = "Admin Page";
+}
+
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <ul class="list-group">
+                @{
+                    foreach (var userName in Model.UserNames)
+                    {
+                        <li class="list-group-item d-flex">
+                            <p class="p-0 m-0 flex-grow-1">@userName</p>
+                            <form asp-page-handler="delete" method="post">
+                                <input type="hidden" name="id" value="@userName"/>
+                                <button type="submit" value="delete" class="btn btn-danger">Delete</button>
+                            </form>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+</div>

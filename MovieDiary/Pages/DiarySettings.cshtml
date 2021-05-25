@@ -1,0 +1,43 @@
+﻿@page
+@using MovieDiary.Library
+@model MovieDiary.Pages.DiarySettingsModel
+@{
+    ViewData["Title"] = "Diary Settings";
+}
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <form asp-page-handler="save" method="post">
+                <div class="custom-control custom-checkbox float-left liitem">
+                    <input class="form-check-input" type="checkbox" asp-for="Settings.ShowYear" name="year">
+                    <h5 class="form-check-label" for="defaultCheck1">
+                        Year
+                    </h5>
+                </div>
+                <div class="custom-control custom-checkbox float-left liitem">
+                    <input class="form-check-input" type="checkbox" asp-for="Settings.ShowDirector" name="director">
+                    <h5 class="form-check-label" for="defaultCheck1">
+                        Director
+                    </h5>
+                </div>
+                <div class="custom-control custom-checkbox float-left liitem">
+                    <input class="form-check-input" type="checkbox" asp-for="Settings.ShowCountry" name="country">
+                    <h5 class="form-check-label" for="defaultCheck1">
+                        Country
+                    </h5>
+                </div>
+                <div class="custom-control custom-checkbox float-left liitem">
+                    <input class="form-check-input" type="checkbox" asp-for="Settings.ShowImdbId" name="ImbdId">
+                    <h5 class="form-check-label" for="defaultCheck1">
+                        IMDB_ID
+                    </h5>
+                </div>
+                <div class="form-group" id="fields">
+                    <input type="text" class="form-control" name="additionalFields" value=@(string.Join(",", Model.Settings.AdditionalFieldNames))>
+                </div>
+                <button type="submit" value="save" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>

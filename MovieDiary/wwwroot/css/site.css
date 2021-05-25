@@ -1,0 +1,49 @@
+﻿/*input[type=text] {
+    width: 300px;
+    height: 45px;
+    color: #000000 !important;
+}
+
+input[type=password] {
+    width: 300px;
+    height: 45px;
+    color: #000000 !important;
+}
+
+.admin-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px;
+}
+
+input {
+    margin: 10px;
+}*/
+
+.liitem {
+    margin-right: 41.2px !important;
+}
+
+.container {
+    padding: 2rem 0rem;
+}
+
+h4 {
+    margin: 2rem 0rem 1rem;
+}
+
+.table-image {
+td, th
+
+{
+    vertical-align: middle;
+}
+}
